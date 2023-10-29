@@ -43,7 +43,7 @@ namespace DevFreela.API
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "@Alex Douglas Ponto & Virgula DevFreela.API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "@Flavio Henrique Ponto & Virgula DevFreela.API", Version = "v1" });
             });
         }
 
