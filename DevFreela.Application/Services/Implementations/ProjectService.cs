@@ -28,30 +28,28 @@ namespace DevFreela.Application.Services.Implementations
             var project = new Project(inputModel.Title, inputModel.Description, inputModel.IdClient, inputModel.IdFreelancer, inputModel.TotalCost);
 
             _dbContext.Projects.Add(project);
-
             _dbContext.SaveChanges();
 
             return project.Id;
         }
 
-        public void CreateComment(CreateCommentInputModel inputModel)
-        {
-            var comment = new ProjectComment(inputModel.Content, inputModel.IdProject, inputModel.IdUser);
+        //public void CreateComment(CreateCommentInputModel inputModel)
+        //{
+        //    var comment = new ProjectComment(inputModel.Content, inputModel.IdProject, inputModel.IdUser);
 
-            _dbContext.ProjectComments.Add(comment);
+        //    _dbContext.ProjectComments.Add(comment);
+        //    _dbContext.SaveChanges();
+        //}
 
-            _dbContext.SaveChanges();
-        }
+        //public void Delete(int id)
+        //{
+        //    var project = _dbContext.Projects.SingleOrDefault(p => p.Id == id);
 
-        public void Delete(int id)
-        {
-            var project = _dbContext.Projects.SingleOrDefault(p => p.Id == id);
-
-            project.Cancel();
+        //    project.Cancel();
             
-            _dbContext.SaveChanges();
+        //    _dbContext.SaveChanges();
 
-        }
+        //}
 
         public void Finish(int id)
         {
@@ -63,16 +61,16 @@ namespace DevFreela.Application.Services.Implementations
 
         }
 
-        public List<ProjectViewModel> GetAll(string query)
-        {
-            var projects = _dbContext.Projects;
+        //public List<ProjectViewModel> GetAll(string query)
+        //{
+        //    var projects = _dbContext.Projects;
 
-            var projectsViewModel = projects
-                .Select(p => new ProjectViewModel(p.Id, p.Title, p.CreatedAt))
-                .ToList();
+        //    var projectsViewModel = projects
+        //        .Select(p => new ProjectViewModel(p.Id, p.Title, p.CreatedAt))
+        //        .ToList();
 
-            return projectsViewModel;
-        }
+        //    return projectsViewModel;
+        //}
 
         public ProjectDetailsViewModel GetById(int id)
         {
@@ -115,13 +113,13 @@ namespace DevFreela.Application.Services.Implementations
             }
         }
 
-        public void Update(UpdateProjectInputModel inputModel)
-        {
-            var project = _dbContext.Projects.SingleOrDefault(p => p.Id == inputModel.Id);
+        //public void Update(UpdateProjectInputModel inputModel)
+        //{
+        //    var project = _dbContext.Projects.SingleOrDefault(p => p.Id == inputModel.Id);
 
-            project.Update(inputModel.Title, inputModel.Description, inputModel.TotalCost);
+        //    project.Update(inputModel.Title, inputModel.Description, inputModel.TotalCost);
 
-            _dbContext.SaveChanges();
-        }
+        //    _dbContext.SaveChanges();
+        //}
     }
 }
