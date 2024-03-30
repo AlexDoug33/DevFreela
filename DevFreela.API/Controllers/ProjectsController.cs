@@ -4,10 +4,8 @@ using DevFreela.Application.Commands.DeleteProject;
 using DevFreela.Application.Commands.FinishProject;
 using DevFreela.Application.Commands.StartProject;
 using DevFreela.Application.Commands.UpdateProject;
-using DevFreela.Application.InputModels;
 using DevFreela.Application.Queries.GetAllProjects;
 using DevFreela.Application.Queries.GetProjectById;
-using DevFreela.Application.Services.Interfaces;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -57,29 +55,36 @@ namespace DevFreela.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] CreateProjectCommand command)
         {
-            if (command.Title.Length > 50)
-            {
-                return BadRequest();
-            }
-
-            //var id = _projectService.Create(inputModel);
-            var id = await  _mediator.Send(command);
+            var id = await _mediator.Send(command);
 
             return CreatedAtAction(nameof(GetById), new { id = id }, command);
+           
+            //if (!ModelState.IsValid)
+            //{
+            //    var messages = ModelState  
+            //        .SelectMany(ms => ms.Value.Errors)
+            //        .Select(e => e.ErrorMessage)
+            //        .ToList();
+
+            //    return BadRequest(messages);
+            //}
+
+            ////var id = _projectService.Create(inputModel);
+
         }
 
         // api/projects/2
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] UpdateProjectCommand command)
         {
-            if (command.Description.Length > 200)
-            {
-                return BadRequest();
-            }
-
             await _mediator.Send(command);
 
             return NoContent();
+
+            //if (command.Description.Length > 200)
+            //{
+            //    return BadRequest();
+            //}
         }
 
         // api/projects/3 DELETE

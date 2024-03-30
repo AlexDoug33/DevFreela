@@ -12,16 +12,17 @@ namespace DevFreela.Application.Commands.CreateUser
 {
     public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, int>
     {
-        private readonly IProjectRepository _projectRepository;
-        public CreateUserCommandHandler(IProjectRepository projectRepository)
+        private readonly DevFreelaDbContext _dbContext;
+        public CreateUserCommandHandler(DevFreelaDbContext dbContext)
         {
-            _projectRepository = projectRepository;
+            _dbContext = dbContext;
         }
         public async Task<int> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
             var user = new User(request.FullName, request.Email, request.BirthDate);
 
-            await _projectRepository.AddUserAsync(user);
+            await _dbContext.Users.AddAsync(user);
+            await _dbContext.SaveChangesAsync();
 
             return user.Id;
         }
