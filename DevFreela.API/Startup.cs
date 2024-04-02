@@ -13,6 +13,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using FluentValidation.AspNetCore;
 using DevFreela.Application.Validators;
+using DevFreela.Infrastructure.Auth;
+using DevFreela.Core.Services;
 
 namespace DevFreela.API
 {
@@ -37,6 +39,8 @@ namespace DevFreela.API
             services.AddScoped<IProjectRepository, ProjectRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ISkillRepository, SkillRepository>();
+            services.AddScoped<IAuthService, AuthService>();
+
 
             //services.AddScoped<ExampleClass>(e => new ExampleClass { Name = "Initial Stage" });
 
