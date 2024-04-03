@@ -115,8 +115,10 @@ namespace DevFreela.API
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            //Nessa ordem, caso contrário a autenticação pode falhar.
             app.UseAuthentication();
+            app.UseAuthorization();
+            
 
             app.UseEndpoints(endpoints =>
             {

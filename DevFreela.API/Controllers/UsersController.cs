@@ -37,7 +37,7 @@ namespace DevFreela.API.Controllers
 
         // api/users
         [HttpPost]
-        [AllowAnonymous]
+        [AllowAnonymous] //Permitir acessar anonimo. 
         public async Task<IActionResult> Post([FromBody] CreateUserCommand command)
         {
             var id = await _mediator.Send(command);
@@ -47,7 +47,7 @@ namespace DevFreela.API.Controllers
 
         // api/users/login
         [HttpPut("login")]
-        [AllowAnonymous]
+        [AllowAnonymous] //Permitir acessar anonimo. 
         public async Task<IActionResult> Login([FromBody] LoginUserCommand command)
         {
             var loginUserviewModel = await _mediator.Send(command);
