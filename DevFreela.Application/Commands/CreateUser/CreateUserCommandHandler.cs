@@ -15,6 +15,7 @@ namespace DevFreela.Application.Commands.CreateUser
     {
         private readonly DevFreelaDbContext _dbContext;
         private readonly IAuthService _authService;
+       
         public CreateUserCommandHandler(DevFreelaDbContext dbContext, IAuthService authService)
         {
             _dbContext = dbContext;
