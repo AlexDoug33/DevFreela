@@ -116,7 +116,7 @@ namespace DevFreela.API.Controllers
 
         // api/projects/1/start
         [HttpPut("{id}/start")]
-        [Authorize(Roles = "client, freelancer")]
+        [Authorize(Roles = "client")]
         public async Task<IActionResult> Start(int id)
         {
            // _projectService.Start(id);
