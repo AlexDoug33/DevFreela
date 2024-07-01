@@ -3,7 +3,7 @@ DevFreela: Plataforma para Contratação de Freelancers 💻
 O projeto DevFreela é uma plataforma inovadora que oferece aos Clientes a oportunidade de contratar Freelancers para a realização de seus Projetos. Desenvolvido utilizando ASP.NET Core e .NET 5.0, o curso proporcionou uma abordagem 
 prática para aprofundar os conhecimentos em diversas áreas, incluindo:
 
-ASP.NET Core com .NET 7;
+ASP.NET Core com .NET 5.0;
 Mensageria eficiente com RabbitMQ;
 Adoção de Arquitetura Limpa;
 Implementação de CQRS (Command Query Responsibility Segregation);
