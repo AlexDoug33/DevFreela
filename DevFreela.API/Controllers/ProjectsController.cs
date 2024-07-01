@@ -16,11 +16,11 @@ namespace DevFreela.API.Controllers
     [Route("api/projects")]
     public class ProjectsController : ControllerBase
     {
-       // private readonly IProjectService _projectService;
+        // private readonly IProjectService _projectService;
         private readonly IMediator _mediator;
         public ProjectsController(IMediator mediator)
         {
-           // _projectService = projectService;
+            // _projectService = projectService;
             _mediator = mediator;
         }
 
@@ -62,7 +62,7 @@ namespace DevFreela.API.Controllers
             var id = await _mediator.Send(command);
 
             return CreatedAtAction(nameof(GetById), new { id = id }, command);
-           
+
             //if (!ModelState.IsValid)
             //{
             //    var messages = ModelState  
@@ -107,7 +107,7 @@ namespace DevFreela.API.Controllers
         // api/projects/1/comments POST
         [HttpPost("{id}/comments")]
         [Authorize(Roles = "client, freelancer")]
-        public async Task <IActionResult> PostComment(int id, [FromBody] CreateCommentCommand command)
+        public async Task<IActionResult> PostComment(int id, [FromBody] CreateCommentCommand command)
         {
             await _mediator.Send(command);
 
@@ -119,8 +119,8 @@ namespace DevFreela.API.Controllers
         [Authorize(Roles = "client")]
         public async Task<IActionResult> Start(int id)
         {
-           // _projectService.Start(id);
-           var command = new StartProjectCommand(id);
+            // _projectService.Start(id);
+            var command = new StartProjectCommand(id);
 
             await _mediator.Send(command);
 
@@ -130,12 +130,17 @@ namespace DevFreela.API.Controllers
         // api/projects/1/finish
         [HttpPut("{id}/finish")]
         [Authorize(Roles = "client")]
-        public async Task<IActionResult> Finish(int id)
+        public async Task<IActionResult> Finish(int id, [FromBody] FinishProjectCommand command)
         {
             // _projectService.Finish(id);
-            var command = new FinishProjectCommand(id);
+            command.Id = id;
 
-            await _mediator.Send(command);
+            var result = await _mediator.Send(command);
+            if (!result)
+            {
+                return BadRequest("O pagamento não pode ser processaso.");
+
+            }
 
             return NoContent();
         }

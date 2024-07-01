@@ -18,6 +18,7 @@ using DevFreela.Core.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using DevFreela.Infrastructure.Payments;
 
 namespace DevFreela.API
 {
@@ -39,10 +40,16 @@ namespace DevFreela.API
             services.AddDbContext<DevFreelaDbContext>(options => options.UseSqlServer(connectionString));
             //services.AddDbContext<DevFreelaDbContext>(options => options.UseInMemoryDatabase("Devfreela"));
 
+            services.AddHttpClient();
+
+
+            services.AddScoped<IPaymentService, PaymentService>();
             services.AddScoped<IProjectRepository, ProjectRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ISkillRepository, SkillRepository>();
             services.AddScoped<IAuthService, AuthService>();
+
+
 
 
             //services.AddScoped<ExampleClass>(e => new ExampleClass { Name = "Initial Stage" });
