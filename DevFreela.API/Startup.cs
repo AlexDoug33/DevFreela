@@ -1,24 +1,21 @@
+using DevFreela.API.Extensions;
 using DevFreela.API.Filters;
 using DevFreela.Application.Commands.CreateProject;
-using DevFreela.Core.Repositories;
+using DevFreela.Application.Consumers;
+using DevFreela.Application.Validators;
 using DevFreela.Infrastructure.Persistence;
-using DevFreela.Infrastructure.Persistence.Repositories;
+using FluentValidation.AspNetCore;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
-using FluentValidation.AspNetCore;
-using DevFreela.Application.Validators;
-using DevFreela.Infrastructure.Auth;
-using DevFreela.Core.Services;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using System.Text;
-using DevFreela.Infrastructure.Payments;
 
 namespace DevFreela.API
 {
@@ -40,17 +37,12 @@ namespace DevFreela.API
             services.AddDbContext<DevFreelaDbContext>(options => options.UseSqlServer(connectionString));
             //services.AddDbContext<DevFreelaDbContext>(options => options.UseInMemoryDatabase("Devfreela"));
 
+            services.AddHostedService<PaymentApprovedConsumer>();
+
             services.AddHttpClient();
 
-
-            services.AddScoped<IPaymentService, PaymentService>();
-            services.AddScoped<IProjectRepository, ProjectRepository>();
-            services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<ISkillRepository, SkillRepository>();
-            services.AddScoped<IAuthService, AuthService>();
-
-
-
+            services
+                .AddInfrastructure();
 
             //services.AddScoped<ExampleClass>(e => new ExampleClass { Name = "Initial Stage" });
 

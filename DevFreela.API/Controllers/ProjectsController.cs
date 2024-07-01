@@ -142,7 +142,7 @@ namespace DevFreela.API.Controllers
 
             }
 
-            return NoContent();
+            return Accepted();
         }
     }
 }
