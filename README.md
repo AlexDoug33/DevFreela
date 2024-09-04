@@ -2,7 +2,7 @@
 **DevFreela has the purpose to offer projects and available labor regarding development.** 
 
 *Technologies* ⌨️
-- ASP.NET Core 7
+- ASP.NET Core 5
 - Entity Framework Core
 - SQL Server
 
