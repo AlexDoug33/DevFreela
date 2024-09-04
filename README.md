@@ -26,3 +26,4 @@
 - Authentication and Authorization with JWT Bearer
 - Unity tests: XUnit
 - Fluent Validation para validação de API
+- Efficient messaging with RabbitMQ
