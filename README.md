@@ -1,16 +1,28 @@
-DevFreela: Plataforma para Contratação de Freelancers 💻
+**DevFreela was developed with clean architecture, repository pattern and CQRS.** 
+**DevFreela has the purpose to offer projects and available labor regarding development.** 
 
-O projeto DevFreela é uma plataforma inovadora que oferece aos Clientes a oportunidade de contratar Freelancers para a realização de seus Projetos. Desenvolvido utilizando ASP.NET Core e .NET 5.0, o curso proporcionou uma abordagem 
-prática para aprofundar os conhecimentos em diversas áreas, incluindo:
+*Technologies* ⌨️
+- ASP.NET Core 7
+- Entity Framework Core
+- SQL Server
 
-ASP.NET Core com .NET 5.0;
-Mensageria eficiente com RabbitMQ;
-Adoção de Arquitetura Limpa;
-Implementação de CQRS (Command Query Responsibility Segregation);
-Aplicação do Padrão Repository;
-Utilização do Entity Framework Core e Dapper para acesso a dados;
-Validação robusta de APIs com FluentValidation;
-Implementação de autenticação e autorização com JWT (JSON Web Tokens);
-Testes unitários com xUnit.
-O curso, ministrado pelo mentor Luis Felipe e disponibilizado na plataforma Next Wave Education, teve uma carga horária de 30 horas, proporcionando uma imersão prática e abrangente nos aspectos fundamentais dessas tecnologias e práticas de 
-desenvolvimento. Este repositório serve como um recurso valioso para consolidar e aplicar os conceitos aprendidos durante o curso, oferecendo um ambiente de aprendizado prático e aplicado.
+*Functionalities* ⚙️
+- User registration for Client.
+- User registration for Freelancer.
+- User login using authentication and authorization.
+- CRUD (Create, Read, Update, Delete) of Projects.
+- Client has permissions to create, edit and delete the project.
+- Add comments to the project: Client and Freelancers can communicate about the project progress through comments.
+- Project status: Start and Finish
+- Client can change the project status.
+
+*Patterns, concepts and architecture* 📂
+- Repository pattern
+- Clean Architecture
+- CQRS
+
+
+*Upcoming* 💡
+- Authentication and Authorization with JWT Bearer
+- Unity tests: XUnit
+- Fluent Validation para validação de API
