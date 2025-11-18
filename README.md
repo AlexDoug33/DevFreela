@@ -27,3 +27,5 @@
 - Unity tests: XUnit
 - Fluent Validation para validação de API
 - Efficient messaging with RabbitMQ
+
+#NEXT WAVE This project is part of the NextWave mentoring program.
